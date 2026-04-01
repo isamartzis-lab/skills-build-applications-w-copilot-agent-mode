@@ -24,6 +24,26 @@
       "problemMatcher": []
     },
     {
+      "label": "Create React App Frontend",
+      "type": "shell",
+      "command": "rm -f octofit-tracker/frontend/.gitkeep && npx create-react-app octofit-tracker/frontend --template cra-template --use-npm",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Install React Dependencies",
+      "type": "shell",
+      "command": "npm install bootstrap --prefix octofit-tracker/frontend && npm install react-router-dom --prefix octofit-tracker/frontend",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
       "label": "Test API Endpoints",
       "type": "shell",
       "command": "source octofit-tracker/backend/venv/bin/activate && python3 octofit-tracker/backend/manage.py runserver 0.0.0.0:8000 & SERVER_PID=$! && sleep 5 && echo '=== Testing API Endpoints ===' && echo '--- /api/ root ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/ && echo '--- /api/users/ ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/users/ && echo '--- /api/teams/ ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/teams/ && echo '--- /api/activities/ ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/activities/ && echo '--- /api/leaderboard/ ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/leaderboard/ && echo '--- /api/workouts/ ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/workouts/ && kill $SERVER_PID",
