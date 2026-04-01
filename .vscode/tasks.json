@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup OctoFit venv and install requirements",
+      "type": "shell",
+      "command": "python3 -m venv octofit-tracker/backend/venv && source octofit-tracker/backend/venv/bin/activate && pip install -r octofit-tracker/backend/requirements.txt",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
