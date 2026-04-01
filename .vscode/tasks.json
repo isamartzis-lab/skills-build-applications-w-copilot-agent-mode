@@ -10,6 +10,28 @@
         "reveal": "always",
         "panel": "new"
       }
+    },
+    {
+      "label": "Start Django Backend Server",
+      "type": "shell",
+      "command": "source octofit-tracker/backend/venv/bin/activate && python3 octofit-tracker/backend/manage.py runserver 0.0.0.0:8000",
+      "group": "build",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Test API Endpoints",
+      "type": "shell",
+      "command": "source octofit-tracker/backend/venv/bin/activate && python3 octofit-tracker/backend/manage.py runserver 0.0.0.0:8000 & SERVER_PID=$! && sleep 5 && echo '=== Testing API Endpoints ===' && echo '--- /api/ root ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/ && echo '--- /api/users/ ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/users/ && echo '--- /api/teams/ ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/teams/ && echo '--- /api/activities/ ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/activities/ && echo '--- /api/leaderboard/ ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/leaderboard/ && echo '--- /api/workouts/ ---' && curl -s -w '\\nHTTP Status: %{http_code}\\n' http://localhost:8000/api/workouts/ && kill $SERVER_PID",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
     }
   ]
 }
